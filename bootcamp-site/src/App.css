@@ -1,8 +1,23 @@
 body {
-  background-image: url("Background-Image.png");
+  background-image: url("assets/Background-Image.png");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
  }
  
+.title {
+  margin: 10px;
+  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: aliceblue;
+  display: flex;
+  flex-direction: row;
+
+}
+
+#logo {
+  padding: 10px;
+  height: 60px;
+  width: 60px;
+}
