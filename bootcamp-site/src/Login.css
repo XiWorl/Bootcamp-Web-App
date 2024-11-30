@@ -18,7 +18,7 @@
     align-items: center;
     gap: 9px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .text {
@@ -29,14 +29,14 @@
 }
 
 .underline {
-    width: 61px;
-    height: 6px;
-    background: whitesmoke;
+    width: 300px;
+    height: 3px;
+    background: #53207f;
     border-radius: 9px;
 }
 
 .inputs {
-    margin-top: 8%;
+    margin-top: 3%;
     display: flex;
     flex-direction: column;
     gap: 30px;
