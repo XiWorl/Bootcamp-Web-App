@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AdminLayout from "./pages/AdminLayout";
-import AdminAnnouncements from "./pages/AdminAnnouncements";
-import AdminLectures from "./pages/AdminLectures";
-import AdminHomeworks from "./pages/AdminHomeworks";
-import AdminMentorGroups from "./pages/AdminMentorGroups";
-import AdminHome from "./pages/AdminHome";
+import AdminLayout from "./AdminLayout";
+import AdminAnnouncements from "./AdminAnnouncements";
+import AdminLectures from "./AdminLectures";
+import AdminHomeworks from "./AdminHomeworks";
+import AdminMentorGroups from "./AdminMentorGroups";
+import AdminHome from "./AdminHome";
 
 export default function RoutePaths() {
   return (

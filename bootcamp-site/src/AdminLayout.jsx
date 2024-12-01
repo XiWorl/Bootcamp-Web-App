@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
 //import {SidebarData} from "./SidebarData"
-import "../App.css"
+import "./App.css"
 import {IconContext} from "react-icons"
 
 
@@ -16,7 +16,7 @@ const AdminLayout = () => {
 
   return (
     <>
-        <h1> hello</h1>
+        <h1 className="title"> Layout </h1>
        <IconContext.Provider value = {{color: "undefined"}}>
             <div className="navbar">
             </div>
