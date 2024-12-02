@@ -1,6 +1,6 @@
 import React from "react";
 
-function AdminLecture() {
+function AdminLectures() {
     return (
         <div className="AdminLecture">
             <h1> Lecture </h1>
@@ -8,4 +8,4 @@ function AdminLecture() {
     )
 }
 
-export default AdminLecture;
+export default AdminLectures;

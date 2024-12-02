@@ -6,12 +6,13 @@ import AdminLayout from './AdminLayout'
 import {Link} from "react-router-dom"
 import RoutePaths from './RouteManager'
 import AdminHomework from './AdminHomeworks'
+import MyCard from './MyCard'
 
 function App() {
 
   return (
     <>
-      <AdminLayout/>
+      <RoutePaths/>
     </>
   )
 }
