@@ -1,9 +1,14 @@
+:root {
+  margin-top: 0px;
+}
+
 body {
   background-image: url("assets/Background-Image.png");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
+  margin: 0px;
  }
  
 .title {
@@ -13,6 +18,7 @@ body {
   color: aliceblue;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
 }
 

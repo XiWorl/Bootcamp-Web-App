@@ -9,11 +9,10 @@ function AdminHomeworks() {
                 <img id='logo' src= {logo} alt="App Dev Logo" />
                 <h1> App Dev Bootcamp Homeworks </h1>
             </div>
-            <div className="AdminHomework">
+            <div className="Student Homework">
                 
             </div>
         </>
-        
     )
 }
 
