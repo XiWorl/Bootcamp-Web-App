@@ -1,18 +1,16 @@
-import ReactDOM from "react-dom/client";
 import React from "react";
-import { useState } from "react";
-import * as FaIcons from "react-icons/fa"
-import * as AiIcons from "react-icons/ai"
-//import {SidebarData} from "./SidebarData"
 import "./App.css"
-import {IconContext} from "react-icons"
-import { Outlet, Link, NavLink } from "react-router";
+import { Outlet } from "react-router";
+import AdminNavbar from "./AdminNavbar";
 
 const AdminLayout = () => {
-    <>
-      <Navbar/>
-      <Outlet/>
-    </>
+    return (
+      <>
+        <AdminNavbar/>
+        <Outlet/>
+      </>
+    )
+
 };
 
 export default AdminLayout;

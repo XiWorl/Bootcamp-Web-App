@@ -3,20 +3,20 @@ import { useState } from "react";
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
 import {Link} from "react-router-dom"
-import {SidebarData} from "./SidebarData"
-import "..App.css"
+import {StudentSidebarData} from "./StudentSidebarData"
+import "./App.css"
 import { IconContext } from "react-icons";
-import "/Navbar.css"
+import "./Navbar.css"
 
 export default function Navbar() {
     const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(sidebar);
+    const showSidebar = () => setSidebar(!sidebar);
 
     return (
         <>
             <IconContext.Provider value = {{ color: "undefined" }}>
                 <div className="navbar">
-                    <Link to="#" className="menu-mars">
+                    <Link to="#" className="menu-bars">
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
                 </div>
@@ -27,7 +27,7 @@ export default function Navbar() {
                                 <AiIcons.AiOutlineClose/>
                             </Link>
                         </li>
-                        {SidebarData.map((item, index) => {
+                        {StudentSidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path}>

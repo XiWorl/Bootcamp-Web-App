@@ -7,23 +7,18 @@ import * as AiIcons from "react-icons/ai"
 import "./App.css"
 import {IconContext} from "react-icons"
 
-
+import Navbar from "./AdminNavbar";
 import { Outlet, Link, NavLink } from "react-router";
 
 const StudentLayout = () => {
-    const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(sidebar);
 
   return (
     <>
-      <h1 className="title">Student Layout </h1>
-      <IconContext.Provider value = {{color: "undefined"}}>
-        <div className="navbar"></div>  
-        <Outlet/>
-      </IconContext.Provider>
+      <Navbar />
+      <Outlet/>
        
     </>
   )
-};
+}
 
 export default StudentLayout;

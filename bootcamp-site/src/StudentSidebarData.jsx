@@ -4,34 +4,34 @@ import * as FaIcon from "react-icons/fa"
 import * as AiIcon from "react-icons/ai"
 import * as IoIcon from "react-icons/io"
 
-export const Sidebar = [
+export const StudentSidebarData = [
     {
         title: "Home",
-        path: "/",
+        path: "/student",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
     {
         title: "Announcements",
-        path: "/announcements",
+        path: "/student/announcements",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     },
     {
         title: "Lectures",
-        path: "/lectures",
+        path: "/student/lectures",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
     {
         title: "Homework",
-        path: "/homeworks",
+        path: "/student/homeworks",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
     {
         title: "Mentor Groups",
-        path: "/mentorgroups",
+        path: "/student/mentorgroups",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
