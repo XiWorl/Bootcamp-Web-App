@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 import {SidebarData} from "./SidebarData"
 import "..App.css"
 import { IconContext } from "react-icons";
+import "/Navbar.css"
 
 export default function Navbar() {
     const [sidebar, setSidebar] = useState(false);

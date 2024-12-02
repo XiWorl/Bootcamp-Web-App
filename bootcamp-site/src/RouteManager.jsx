@@ -16,11 +16,15 @@ import StudentLectures from "./StudentLectures";
 import StudentHomeworks from "./StudentHomeworks";
 import StudentMentorGroups from "./StudentMentorGroups";
 import StudentHome from "./StudentHome";
+import LoginSignUp from "./Login";
 
 export default function RoutePaths() {
   return (
     <Router >
       <Routes>
+        <Route path= "/" element ={<LoginSignUp/>}>
+        </Route>
+
         {/* Routes students to the Student Home */}
         <Route path= "/student/*" element ={<StudentLayout/>}>
           <Route index element={<StudentHome />} />

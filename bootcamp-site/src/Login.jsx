@@ -5,6 +5,7 @@ import { useState } from 'react'
 import user_icon from './assets/person.png';
 import email_icon from './assets/email.png'
 import password_icon from './assets/password.png'
+import logo from './assets/App-Dev-Logo.png'
 
 
 const LoginSignUp = () => {
@@ -12,8 +13,13 @@ const LoginSignUp = () => {
     const [action, setAction] = useState("Sign Up");
 
     return (
-        <div className="container">
-            <div className="header"> 
+        <>
+            <div className='title'>
+                <img id='logo' src= {logo} alt="App Dev Logo" />
+                <h1> App Dev Bootcamp </h1>
+            </div>
+            <div className="container">
+                <div className="header"> 
                 <div className="text"> {action} </div>
                 <div className="underline"></div>
             </div>
@@ -41,8 +47,8 @@ const LoginSignUp = () => {
                 </div>
 
             </div>
-
         </div>
+        </>
     )
 }
 
