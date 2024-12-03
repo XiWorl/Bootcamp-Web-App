@@ -46,10 +46,15 @@ export default function Fetch () {
         <img id='logo' src= {logo} alt="App Dev Logo" />
         <h1> App Dev Bootcamp Homeworks </h1>
     </div>
-    {todos.map((todo) => (<div className="Student-Homework">
-        <MyCard className="card" width="23rem" image={todo.img_link} title={todo.class} instructions={"Complete the following assignment"} url={todo.link} typeOfButton="Submit"/>
-    </div>))
+    <div className="Student-Homework">
+    {todos.map((todo) => (
+    <div>
+        <MyCard className="card" image={todo.img_link} title={todo.class} instructions={"Complete the following assignment"} typeOfButton = 'Submit' url={todo.link} />
+    </div>
+    )
+    )
     }
+    </div>
     </>
  );
 };

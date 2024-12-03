@@ -5,7 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const MyCard = ({ title, instructions, image, url, typeOfButton}) => {
     return (
-        <Card style={{ width: "23rem" }}>
+        <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
