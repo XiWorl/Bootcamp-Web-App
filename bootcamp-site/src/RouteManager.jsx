@@ -21,11 +21,9 @@ export default function RoutePaths() {
   return (
     <Router >
       <Routes>
-        <Route path= "/" element ={<LoginSignUp/>}>
-        </Route>
 
         {/* Routes students to the Student Home */}
-        <Route path= "/student/*" element ={<StudentLayout/>}>
+        <Route path= "/" element ={<StudentLayout/>}>
           <Route index element={<StudentHome />} />
           <Route path="announcements" element={<StudentAnnouncements />} />
           <Route path="lectures" element={<StudentLectures />} />

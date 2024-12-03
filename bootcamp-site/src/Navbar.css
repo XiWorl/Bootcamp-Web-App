@@ -14,7 +14,7 @@
 
 /* Navbar CSS */
 .navbar {
-  background-color: #55185e;
+  background-color: #53217eff;
   height: 70px;
   display: flex;
   justify-content: flex-start;
@@ -33,7 +33,7 @@
 }
 
 .nav-menu {
-  background-color: #55185e;
+  background-color: #53217eff;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -83,7 +83,7 @@
 }
 
 .navbar-toggle {
-  background-color: #55185e;
+  background-color: #53217eff;
   width: 100%;
   height: 80px;
   display: flex;

@@ -3,15 +3,17 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const CardWithoutButton = ({ title, instructions, image, url}) => {
+const CardWithoutButton = ({ title, mentors, mentees}) => {
     return (
-        <Card style={{ width: "23rem" }}>
-            <Card.Img variant="top" src={image} />
+        <Card style={{ width: "18rem" }}>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text> {instructions}</Card.Text>
-      </Card.Body>
-    </Card>
+                <Card.Text> Mentors: </Card.Text>
+                <Card.Text> {mentors} </Card.Text>
+                <Card.Text> Mentees: </Card.Text>
+                <Card.Text> {mentees} </Card.Text>
+            </Card.Body>
+        </Card>
     )
 }
 

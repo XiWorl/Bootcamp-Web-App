@@ -6,31 +6,31 @@ import * as IoIcon from "react-icons/io"
 export const StudentSidebarData = [
     {
         title: "Home",
-        path: "/student",
+        path: "/",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
     {
         title: "Announcements",
-        path: "/student/announcements",
+        path: "/announcements",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     },
     {
         title: "Lectures",
-        path: "/student/lectures",
+        path: "/lectures",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
     {
         title: "Homeworks",
-        path: "/student/homeworks",
+        path: "/homeworks",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 
     {
         title: "Mentor Groups",
-        path: "/student/mentorgroups",
+        path: "/mentorgroups",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",
     }, 

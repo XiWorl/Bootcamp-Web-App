@@ -53,7 +53,17 @@ body {
 }
 
 .card {
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+
+.Student-Announcements {
+  margin-left: 3%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
 }
