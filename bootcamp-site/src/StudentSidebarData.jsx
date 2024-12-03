@@ -23,7 +23,7 @@ export const StudentSidebarData = [
         cName: "nav-text",
     }, 
     {
-        title: "Homework",
+        title: "Homeworks",
         path: "/student/homeworks",
         icons: <AiIcon.AiFillHome />,
         cName: "nav-text",

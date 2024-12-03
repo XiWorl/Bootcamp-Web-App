@@ -27,3 +27,20 @@ body {
   height: 60px;
   width: 60px;
 }
+
+.Student-Homework {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-evenly;
+  z-index: 1;
+}
+
+.card {
+  margin-bottom: 30px;
+}

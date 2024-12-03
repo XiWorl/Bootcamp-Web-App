@@ -49,6 +49,7 @@
   left: 0;
   transition: 450ms;
   font-family: "Lato", sans-serif;
+  z-index: 10;
 }
 
 .nav-text {

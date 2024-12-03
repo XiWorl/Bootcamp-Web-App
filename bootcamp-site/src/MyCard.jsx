@@ -1,15 +1,16 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const MyCard = ({title, instructions, url}) => {
+const MyCard = ({title, instructions, image, url}) => {
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={url} />
+            <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text> {instructions}</Card.Text>
-        <Button variant="primary"> {title} </Button>
+        <Button variant="primary" href={url}> Submit </Button>
       </Card.Body>
     </Card>
     )
