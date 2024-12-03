@@ -23,20 +23,20 @@ announcements = []
 
 
 lectures_queries = [(i,v) for i,v in enumerate(lecture_slides)]
-homework_queries = [(i,v) for i,v in enumerate(lecture_slides)]
+homework_queries = [(i,v) for i,v in enumerate(homeworks)]
 
 
 
 
 con = sqlite3.connect('appdev.db')
 cur = con.cursor()
-    
+
 cur.execute("DROP TABLE lectures")
 lecture_table = """
         CREATE TABLE lectures (
             class INTEGER,
             link VARCHAR
-        ); 
+        );
     """
 
 con.execute(lecture_table)
@@ -45,7 +45,7 @@ homework_table = """
         CREATE TABLE homeworks (
             class INTEGER,
             link VARCHAR
-        ); 
+        );
     """
 
 con.execute(homework_table)
@@ -53,10 +53,8 @@ con.execute(homework_table)
 
 cur.executemany("INSERT INTO lectures VALUES(?, ?)", lectures_queries)
 cur.executemany("INSERT INTO homeworks VALUES(?, ?)", homework_queries)
-
+con.commit()
 for c,l in cur.execute("SELECT class, link FROM homeworks"):
     print(c,l)
 
 con.close()
-
-

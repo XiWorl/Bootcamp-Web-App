@@ -21,6 +21,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+
+'''This is just testing '''
 todos = [
     {
         "id": "1",
@@ -31,6 +33,7 @@ todos = [
         "item": "Cycle around town."
     }
 ]
+
 
 @app.get("/", tags=["root"])
 async def read_root() -> dict:
