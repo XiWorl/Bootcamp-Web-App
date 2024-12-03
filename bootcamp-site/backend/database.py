@@ -19,44 +19,54 @@ homeworks = [
 "https://forms.gle/65u4Er1kCaEMJioa7"
 ]
 
+
+homework_imgs = [
+    "../src/assets/ImageHomework1.png",
+    "../src/assets/ImageHomework2.png",
+    "../src/assets/ImageHomework3.png",
+    "../src/assets/ImageHomework4.png",
+    "../src/assets/ImageHomework5.png",
+]
+
 announcements = []
 
 
 lectures_queries = [(i,v) for i,v in enumerate(lecture_slides)]
-homework_queries = [(i,v) for i,v in enumerate(lecture_slides)]
+homework_queries = [(f"Homework {i + 1}",v, homework_imgs[i]) for i,v in enumerate(homeworks)]
 
 
 
 
 con = sqlite3.connect('appdev.db')
 cur = con.cursor()
-    
+
 cur.execute("DROP TABLE lectures")
 lecture_table = """
         CREATE TABLE lectures (
             class INTEGER,
             link VARCHAR
-        ); 
+        );
     """
 
 con.execute(lecture_table)
 cur.execute("DROP TABLE homeworks")
 homework_table = """
         CREATE TABLE homeworks (
-            class INTEGER,
-            link VARCHAR
-        ); 
+            class VARCHAR,
+            link VARCHAR,
+            img_link VARCHAR
+        );
     """
 
 con.execute(homework_table)
 
 
 cur.executemany("INSERT INTO lectures VALUES(?, ?)", lectures_queries)
-cur.executemany("INSERT INTO homeworks VALUES(?, ?)", homework_queries)
+cur.executemany("INSERT INTO homeworks VALUES(?, ?, ?)", homework_queries)
+con.commit()
 
-for c,l in cur.execute("SELECT class, link FROM homeworks"):
-    print(c,l)
+#for debugging
+for c in cur.execute("SELECT * FROM homeworks"):
+    print(c)
 
 con.close()
-
-

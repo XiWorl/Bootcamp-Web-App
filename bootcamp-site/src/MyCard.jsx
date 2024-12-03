@@ -10,7 +10,7 @@ const MyCard = ({ title, instructions, image, url, typeOfButton}) => {
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text> {instructions}</Card.Text>
-        <Button variant="primary" href={url}> {typeOfButton} </Button>
+        <Button variant="primary" href={url} target="_blank"> {typeOfButton} </Button>
       </Card.Body>
     </Card>
     )
