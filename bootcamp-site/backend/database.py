@@ -32,7 +32,7 @@ announcements = []
 
 
 lectures_queries = [(i,v) for i,v in enumerate(lecture_slides)]
-homework_queries = [(i + 1,v, homework_imgs[i]) for i,v in enumerate(homeworks)]
+homework_queries = [(f"Homework {i + 1}",v, homework_imgs[i]) for i,v in enumerate(homeworks)]
 
 
 
@@ -52,7 +52,7 @@ con.execute(lecture_table)
 cur.execute("DROP TABLE homeworks")
 homework_table = """
         CREATE TABLE homeworks (
-            class INTEGER,
+            class VARCHAR,
             link VARCHAR,
             img_link VARCHAR
         );
