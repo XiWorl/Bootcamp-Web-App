@@ -18,7 +18,7 @@ homeworks = [
 "https://forms.gle/6XVNWAyVc5ADfZxz9",
 "https://forms.gle/fhbZwTntgESBEY6j8",
 "https://forms.gle/2bRc93qwD8nwJafu5",
-"https://forms.gle/65u4Er1kCaEMJioa7"
+"https://forms.gle/8SXRVwGs4q2MQHJD6"
 ]
 
 
@@ -87,10 +87,58 @@ announcements_dates = [
 ]
 
 
+group_names = [
+    "Praying for Internships 🙏",
+     "Researchers",
+     "ADC Whales",
+      "Quant",
+      "Team 4 People",
+       "Kimbots",
+        "BHANK",
+        "Praying for Internships 🙏 ",
+        "Samai's Legacy"
+]
+
+group_description = [
+    "Specializing Software Engineering and Quant Development",
+    "Specializing in AI Research",
+    "Exploring machine learning, AI models, and automation.",
+    "Specializing in Quant Development",
+    "Specializing in Software Engineering",
+     "Specializing in Software Engineering",
+     "Specializing in Software Engineering",
+     "Specializing in Software Engineering and AI Research",
+     "Specializing in Software Engineering, Product Managements, and Consulting"
+]
+
+group_mentor = [
+    "Spencer and Pheobe",
+    "Phillip & Aaquib",
+    "Emily Davis",
+    "Aditya & Sam",
+    "Brian & Yanit",
+    "Maura & Michelle",
+     "Jayden & Ravi",
+     "Nitish & Gavin",
+     "Samai & Matt"
+]
+
+group_members = [
+    "Lakshmee Harivanam, Joseph Acquah, Milana Dagne, Jayant Kammula, & Uriel Vit-Ojiegbe",
+    "Pranav Krishnamurthy, Misha Khan, Cedric Pierre-Louis, Harini Thirukonda, & Emily Lawrence \n          ",
+    "Andy Chen, Kira Le, Lily Ureta, Kyle Yin, & Rachel Li",
+    "Deep Mistry, Samara Rahman, Yashu Bommareddy, Mazin Nadaf, & Brandon Isbell",
+    "Sawyer Bloom, Lauren Lipinski, Ryan Selser, Natali Oleinik, & Jacob Demory",
+    "Autumn Anson, Rukmini Gaddam, Muatasim Miller, Nate Zhang, & Ryan Li",
+    "Kaleb Ward, Andrew Chen, Bhavya Tanugula, Nimisokan Ojikutu, & Harleen Green",
+    "Aditi Sethi, Nithya Gopalakrishnan, Aryan Jain, Dhruv Satanur, & Rushil Juneja",
+    "Vir Trivedi, Riya Lakhani, Madeline Moldrem, Samantha Tyles, & James Miller"
+]
+
 lectures_queries = [(f'Lecture {i+1}',v, lecture_imgs[i], lecture_topics[i]) for i,v in enumerate(lecture_slides)]
 homework_queries = [(f"Homework {i + 1}",v, homework_imgs[i]) for i,v in enumerate(homeworks)]
 announcements_queries = [(announcements_titles[i], announcements_dates[i],v) for i,v in enumerate(announcements)]
-
+group_queries = [(i + 1, group_names[i], v, group_mentor[i], group_members[i]) for i,v in enumerate(group_description)]
 
 
 
@@ -136,15 +184,31 @@ announcements_table = """
 con.execute(announcements_table)
 
 
+cur.execute("DROP TABLE groups")
+groups_table = """
+        CREATE TABLE groups (
+            id INTEGER,
+            name VARCHAR,
+            description VARCHAR,
+            mentor VARCHAR,
+            members VARCHAR
+        );
+    """
+
+
+con.execute(groups_table)
+
+
 cur.executemany("INSERT INTO lectures VALUES(?, ?, ?, ?)", lectures_queries)
 cur.executemany("INSERT INTO homeworks VALUES(?, ?, ?)", homework_queries)
 cur.executemany("INSERT INTO announcements VALUES(?, ?, ?)", announcements_queries)
+cur.executemany("INSERT INTO groups VALUES(?, ?, ?, ?, ?)", group_queries)
 
 
 con.commit()
 
 #for debugging
-for c in cur.execute("SELECT * FROM announcements"):
+for c in cur.execute("SELECT id FROM groups"):
     print(c)
 
 con.close()

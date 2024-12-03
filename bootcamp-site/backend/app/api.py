@@ -101,5 +101,28 @@ def get_announcements():
 
 
 @app.get('/announcements')
-def return_homeworks():
+def return_announcements():
     return { "data": get_announcements() }
+
+
+
+
+def get_groups():
+    # Connecting to our database
+    con = sqlite3.connect("./appdev.db")
+    cur = con.cursor()
+    data = []
+    for i,n,d,mt,mb in cur.execute("SELECT id, name, description, mentor, members FROM groups"):
+        data.append( {
+        "id": i,
+        "name": n,
+        "description": d,
+        "mentor": mt,
+        "members": mb
+    })
+    return data
+
+
+@app.get('/groups')
+def return_homeworks():
+    return { "data": get_groups() }

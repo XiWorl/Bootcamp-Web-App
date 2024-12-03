@@ -1,75 +1,51 @@
 import React from "react";
 import logo from './assets/App-Dev-Logo.png';
+import { useState, useEffect } from 'react';
+
 import "./App.css";
 import "./StudentMentorGroups.css";
 
 function StudentMentorGroup() {
-    const mentorGroups = [
-        {
-            id: 1,
-            name: "Praying for Internships 🙏 ",
-            description: "Specializing Software Engineering and Quant Development",
-            mentor: "Spencer and Pheobe",
-            members: "Lakshmee Harivanam, Joseph Acquah, Milana Dagne, Jayant Kammula, & Uriel Vit-Ojiegbe"
-        },
-        {
-            id: 2,
-            name: "Researchers",
-            description: "Specializing in AI Research",
-            mentor: "Phillip & Aaquib",
-            members: "Pranav Krishnamurthy, Misha Khan, Cedric Pierre-Louis, Harini Thirukonda, & Emily Lawrence"
-        },
-        {
-            id: 3,
-            name: "Akshaj & Aidan",
-            description: "Exploring machine learning, AI models, and automation.",
-            mentor: "Emily Davis",
-            members: "Andy Chen, Kira Le, Lily Ureta, Kyle Yin, & Rachel Li"
-        },
-        {
-            id: 4,
-            name: "Quant",
-            description: "Specializing in Quant Development",
-            mentor: "Aditya & Sam",
-            members: "Deep Mistry, Samara Rahman, Yashu Bommareddy, Mazin Nadaf, & Brandon Isbell"
-        },
-        {
-            id: 5,
-            name: "Team 4 People",
-            description: "Specializing in Software Engineering",
-            mentor: "Brian & Yanit",
-            members: "Sawyer Bloom, Lauren Lipinski, Ryan Selser, Natali Oleinik, & Jacob Demory"
-        },
-        {
-            id: 6,
-            name: "Kimbots",
-            description: "Specializing in Software Engineering",
-            mentor: "Maura & Michelle",
-            members: "Autumn Anson, Rukmini Gaddam, Muatasim Miller, Nate Zhang, & Ryan Li"
-        },
-        {
-            id: 7,
-            name: "BHANK",
-            description: "Specializing in Software Engineering",
-            mentor: "Jayden & Ravi",
-            members: "Kaleb Ward, Andrew Chen, Bhavya Tanugula, Nimisokan Ojikutu, & Harleen Green"
-        },
-        {
-            id: 8,
-            name: "Praying for Internships 🙏 ",
-            description: "Specializing in Software Engineering and AI Research",
-            mentor: "Nitish & Gavin",
-            members: "Aditi Sethi, Nithya Gopalakrishnan, Aryan Jain, Dhruv Satanur, & Rushil Juneja"
-        },
-        {
-            id: 9,
-            name: "Samai's Legacy",
-            description: "Specializing in Software Engineering, Product Managements, and Consulting",
-            mentor: "Samai & Matt",
-            members: "Vir Trivedi, Riya Lakhani, Madeline Moldrem, Samantha Tyles, & James Miller"
-        },
-    ];
+    // const mentorGroups = [
+    //     {
+    //         id: 1,
+    //         name: "Ayanokoji",
+    //         description: "Specializing in React, CSS, and modern web design.",
+    //         mentor: "John Doe",
+    //         members: 10,
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Sakayanagi",
+    //         description: "Focus on Node.js, Express, and database management.",
+    //         mentor: "Jane Smith",
+    //         members: 8,
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Horikita",
+    //         description: "Exploring machine learning, AI models, and automation.",
+    //         mentor: "Emily Davis",
+    //         members: 12,
+    //     },
+    //     {
+    //         id: 4,
+    //         name: "Ryuen",
+    //         description: "Creating mobile apps using React Native and Flutter.",
+    //         mentor: "Michael Brown",
+    //         members: 9,
+    //     },
+    // ];
 
+    const [mentorGroups, setGroups] = useState([])
+    const fetchTodos = async () => {
+      const response = await fetch("http://127.0.0.1:8000/groups")
+      const mentorGroups = await response.json()
+      setGroups(mentorGroups.data)
+    }
+    useEffect(() => {
+      fetchTodos()
+    }, [])
     const descriptionColors = ["#FFB6C1", "#87CEEB", "#90EE90", "#FFA500"];
 
     return (
