@@ -62,4 +62,24 @@ def get_homeworks():
 @app.get('/homeworks')
 def return_homeworks():
     return { "data": get_homeworks() }
-    #return get_homeworks()
+
+
+
+def get_lectures():
+    # Connecting to our database
+    con = sqlite3.connect("./appdev.db")
+    cur = con.cursor()
+    data = []
+    for c,l, i, t in cur.execute("SELECT class, link, img_link, topics FROM lectures"):
+        data.append( {
+        "class": c,
+        "link": l,
+        "img_link": i,
+        "topics": t
+    })
+    return data
+
+
+@app.get('/lectures')
+def return_homeworks():
+    return { "data": get_lectures() }
