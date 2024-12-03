@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import logo from './assets/App-Dev-Logo.png'
 import "./App.css"
 import MyCard from "./MyCard";
@@ -12,26 +13,57 @@ import ImageLecture7 from "./assets/ImageLecture7.png"
 import ImageLecture8 from "./assets/ImageLecture8.png"
 import CardWithoutButton from "./CardWithoutButton";
 
-function StudentLectures() {
-    return (
-        <>
-            <div className='title'>
-                <img id='logo' src= {logo} alt="App Dev Logo" />
-                <h1> App Dev Bootcamp Lectures </h1>
-            </div>
+// function StudentLectures() {
+//     return (
+//         <>
+//             <div className='title'>
+//                 <img id='logo' src= {logo} alt="App Dev Logo" />
+//                 <h1> App Dev Bootcamp Lectures </h1>
+//             </div>
 
-            <div className="Student-Lectures" >
-                <MyCard className="card" image={ImageLecture1} title="Lecture 1" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture2} title="Lecture 2" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture3} title="Lecture 3" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture4} title="Lecture 4" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture5} title="Lecture 5" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture6} title="Lecture 6" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture7} title="Lecture 7" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-                <MyCard className="card" image={ImageLecture8} title="Lecture 8" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
-            </div>
-        </>
+//             <div className="Student-Lectures" >
+//                 <MyCard className="card" image={ImageLecture1} title="Lecture 1" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture2} title="Lecture 2" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture3} title="Lecture 3" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture4} title="Lecture 4" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture5} title="Lecture 5" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture6} title="Lecture 6" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture7} title="Lecture 7" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//                 <MyCard className="card" image={ImageLecture8} title="Lecture 8" instructions="topics of lecture" url="https://www.google.com/" typeOfButton="Go to Slides"/>
+//             </div>
+//         </>
+//     )
+// }
+
+// export default StudentLectures;
+
+
+
+export default function Fetch () {
+    const [todos, setTodos] = useState([])
+    const fetchTodos = async () => {
+      const response = await fetch("http://127.0.0.1:8000/lectures")
+      const todos = await response.json()
+      setTodos(todos.data)
+    }
+    useEffect(() => {
+      fetchTodos()
+    }, [])
+ return (
+    <>
+     <div className='title'>
+        <img id='logo' src= {logo} alt="App Dev Logo" />
+        <h1> App Dev Bootcamp Homeworks </h1>
+    </div>
+    <div className="Student-Lectures">
+    {todos.map((todo) => (
+    <div>
+        <MyCard className="card" image={todo.img_link} title={todo.class} instructions={todo.topics} typeOfButton = 'View Lecture' url={todo.link} />
+    </div>
     )
-}
-
-export default StudentLectures;
+    )
+    }
+    </div>
+    </>
+ );
+};
