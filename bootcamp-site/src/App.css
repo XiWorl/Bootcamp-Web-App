@@ -39,7 +39,6 @@ body {
   align-content: space-evenly;
   z-index: 1;
 }
-
 .Student-Lectures {
   margin-left: 5%;
   margin-right: 5%;
@@ -50,6 +49,11 @@ body {
   flex-wrap: wrap;
   align-content: space-evenly;
   z-index: 1;
+}
+
+.Student-Announcements {
+  margin-left: 3%;
+  margin-right: 5%;
 }
 
 .card {

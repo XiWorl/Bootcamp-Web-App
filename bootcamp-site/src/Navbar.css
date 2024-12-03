@@ -63,7 +63,7 @@
 
 .nav-text a {
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 18px;
   width: 95%;
   height: 100%;
@@ -96,5 +96,5 @@ span {
 }
 
 .close-icon {
-  color: #ffffff;
+  color: black;
 }
