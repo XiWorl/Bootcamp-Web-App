@@ -19,11 +19,20 @@ homeworks = [
 "https://forms.gle/65u4Er1kCaEMJioa7"
 ]
 
+
+homework_imgs = [
+    "../src/assets/ImageHomework1.png",
+    "../src/assets/ImageHomework2.png",
+    "../src/assets/ImageHomework3.png",
+    "../src/assets/ImageHomework4.png",
+    "../src/assets/ImageHomework5.png",
+]
+
 announcements = []
 
 
 lectures_queries = [(i,v) for i,v in enumerate(lecture_slides)]
-homework_queries = [(i,v) for i,v in enumerate(homeworks)]
+homework_queries = [(i + 1,v, homework_imgs[i]) for i,v in enumerate(homeworks)]
 
 
 
@@ -44,7 +53,8 @@ cur.execute("DROP TABLE homeworks")
 homework_table = """
         CREATE TABLE homeworks (
             class INTEGER,
-            link VARCHAR
+            link VARCHAR,
+            img_link VARCHAR
         );
     """
 
@@ -52,9 +62,11 @@ con.execute(homework_table)
 
 
 cur.executemany("INSERT INTO lectures VALUES(?, ?)", lectures_queries)
-cur.executemany("INSERT INTO homeworks VALUES(?, ?)", homework_queries)
+cur.executemany("INSERT INTO homeworks VALUES(?, ?, ?)", homework_queries)
 con.commit()
-for c,l in cur.execute("SELECT class, link FROM homeworks"):
-    print(c,l)
+
+#for debugging
+for c in cur.execute("SELECT * FROM homeworks"):
+    print(c)
 
 con.close()

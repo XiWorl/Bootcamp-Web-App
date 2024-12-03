@@ -50,10 +50,11 @@ def get_homeworks():
     con = sqlite3.connect("./appdev.db")
     cur = con.cursor()
     data = []
-    for c,l in cur.execute("SELECT class, link FROM homeworks"):
+    for c,l, i in cur.execute("SELECT class, link, img_link FROM homeworks"):
         data.append( {
         "class": c,
         "link": l,
+        "img_link": i
     })
     return data
 
