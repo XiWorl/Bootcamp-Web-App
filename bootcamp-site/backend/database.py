@@ -1,96 +1,62 @@
-from datetime import datetime
 import sqlite3
-import pandas as pd
 import os
 
-create_disaster = False
-create_mortgage = False
-create_foreclosure = False
 
-if create_disaster: 
-    disasters = pd.read_csv("DisasterDeclarationsSummaries.csv")
+lecture_slides = [
+"https://docs.google.com/presentation/d/1VP9mrEZJZ9ALk2dBwadcGkWBg5twjUbM6VFZ7Fn3Vkk/edit?usp=sharing",
+"https://docs.google.com/presentation/d/1wO047LhrT73QIcC5WzFhzGOtYhxap3aPq-nYbjmOSKk/edit?usp=sharing",
+"https://docs.google.com/presentation/d/1RWvO8TQ_ueJyBdSHfZ6oNvq9E6J3rYovItbX_Q-r-44/edit?usp=sharing",
+"https://docs.google.com/presentation/d/14ooPTPyM4QZPWMBq2sg4NypMQZAHQ4rY5n6CUn6l7zI/edit?usp=sharing",
+"https://docs.google.com/presentation/d/1YzEswdGs5zqZMaK8zPCaJl8PiiFFOYDnz2QVHLDAxak/edit?usp=sharing",
+"https://docs.google.com/presentation/d/1GTiIFoT1EDLZ0Y9SC6G1f9c1-YZoMM-NMLOC8-0_-lI/edit?usp=sharing"
+]
 
-    con = sqlite3.connect("disasters.db")
-    cur = con.cursor()
+homeworks = [
+"https://forms.gle/MQejHVuzuVzj3uGE7",
+"https://forms.gle/6XVNWAyVc5ADfZxz9",
+"https://forms.gle/fhbZwTntgESBEY6j8",
+"https://forms.gle/2bRc93qwD8nwJafu5",
+"https://forms.gle/65u4Er1kCaEMJioa7"
+]
 
-    data = []
-    for index, row in disasters.iterrows():
-        incidentType = row['incidentType']
-        state = row['state']
-        declarationDate = row['declarationDate']
-        declarationTitle = row['declarationTitle']
-        data.append((state, declarationDate, incidentType, declarationTitle))
-        
-    cur.executemany("INSERT INTO disasters VALUES(?, ?, ?, ?)", data)
-        
-    con.commit()
+announcements = []
 
-if create_mortgage:
-    mortgages = pd.read_csv('StateMortgagesPercent-30-89DaysLate-thru-2023-09.csv')
 
-    con = sqlite3.connect('disasters.db')
-    cur = con.cursor()
+lectures_queries = [(i,v) for i,v in enumerate(lecture_slides)]
+homework_queries = [(i,v) for i,v in enumerate(lecture_slides)]
+
+
+
+
+con = sqlite3.connect('appdev.db')
+cur = con.cursor()
     
-    cur.execute("DROP TABLE mortgages")
-
-    new_table = """
-        CREATE TABLE mortgages (
-            State VARCHAR(255),
-            Rate REAL,
-            Month DATE
+cur.execute("DROP TABLE lectures")
+lecture_table = """
+        CREATE TABLE lectures (
+            class INTEGER,
+            link VARCHAR
         ); 
     """
-    con.execute(new_table)
 
-
-    mortgages = pd.read_csv('StateMortgagesPercent-30-89DaysLate-thru-2023-09.csv')
-
-    data = []
-
-    for index, row in mortgages.iterrows():
-        state = row['Name']
-        for col in mortgages.columns:
-            if col != "RegionType" and col != "Name" and col != "FIPSCode":
-                data.append((state, row[col], col))
-
-    cur.executemany("INSERT INTO mortgages VALUES(?, ?, ?)", data)
-    con.commit()
-
-if create_foreclosure:
-    foreclosures = pd.read_csv('atlanta.csv')
-    con = sqlite3.connect('disasters.db')
-    cur = con.cursor()
-    
-    cur.execute("DROP TABLE foreclosures")
-    
-    new_table = """
-        CREATE TABLE foreclosures (
-            City VARCHAR(255),
-            Date DATE
-        )
-        
+con.execute(lecture_table)
+cur.execute("DROP TABLE homeworks")
+homework_table = """
+        CREATE TABLE homeworks (
+            class INTEGER,
+            link VARCHAR
+        ); 
     """
-    
-    cur.execute(new_table)
-    
-    data = []
-    for index, row in foreclosures.iterrows():
-        city = 'atlanta'
-        date = row['Foreclosure_date']
-        
-        if not pd.isna(date):
-            date_object = datetime.strptime(str(int(date)), '%m%Y')
-            # Formatting the date as year-month
-            formatted_date = date_object.strftime('%Y-%m')
-            data.append((city, formatted_date))
-            
-    cur.executemany("INSERT INTO foreclosures VALUES (?,?)", data)
-    con.commit()
-    
-conn = sqlite3.connect('disasters.db')
 
-db_size_bytes = os.path.getsize('disasters.db')
+con.execute(homework_table)
 
-conn.close()
 
-print(f"Database size: {db_size_bytes} bytes") 
+cur.executemany("INSERT INTO lectures VALUES(?, ?)", lectures_queries)
+cur.executemany("INSERT INTO homeworks VALUES(?, ?)", homework_queries)
+
+for c,l in cur.execute("SELECT class, link FROM homeworks"):
+    print(c,l)
+
+con.close()
+
+
