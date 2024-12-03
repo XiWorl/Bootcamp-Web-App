@@ -1,7 +1,7 @@
 import React from "react";
 import logo from './assets/App-Dev-Logo.png';
 import rectangle from './assets/Rectangle 1.png';
-import "./StudentHomework.css";
+import "./StudentHome.css";
 import { Link } from "react-router-dom"; 
 
 function StudentHome() {
