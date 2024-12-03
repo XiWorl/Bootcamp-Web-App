@@ -41,15 +41,15 @@ lecture_imgs = [
     "../src/assets/ImageLecture8.png",
 ]
 
-lecture_descriptions = [
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
+lecture_topics = [
+    'Introduction',
+    'Git, HTML, CSS',
+    'Intermediate Git, CSS, JS',
+    'JS ASYNC, TS AWAIT',
+    'React',
+    'React State',
+    'APIs',
+    'SQLite',
 ]
 
 
@@ -58,7 +58,7 @@ lecture_descriptions = [
 announcements = []
 
 
-lectures_queries = [(i,v) for i,v in enumerate(lecture_slides)]
+lectures_queries = [(f'Lecture {i+1}',v, lecture_imgs[i], lecture_topics[i]) for i,v in enumerate(lecture_slides)]
 homework_queries = [(f"Homework {i + 1}",v, homework_imgs[i]) for i,v in enumerate(homeworks)]
 
 
@@ -70,8 +70,10 @@ cur = con.cursor()
 cur.execute("DROP TABLE lectures")
 lecture_table = """
         CREATE TABLE lectures (
-            class INTEGER,
-            link VARCHAR
+            class VARCHAR,
+            link VARCHAR,
+            img_link VARCHAR,
+            topics VARCHAR
         );
     """
 
@@ -88,12 +90,12 @@ homework_table = """
 con.execute(homework_table)
 
 
-cur.executemany("INSERT INTO lectures VALUES(?, ?)", lectures_queries)
+cur.executemany("INSERT INTO lectures VALUES(?, ?, ?, ?)", lectures_queries)
 cur.executemany("INSERT INTO homeworks VALUES(?, ?, ?)", homework_queries)
 con.commit()
 
 #for debugging
-for c in cur.execute("SELECT * FROM homeworks"):
+for c in cur.execute("SELECT * FROM lectures"):
     print(c)
 
 con.close()
