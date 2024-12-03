@@ -83,3 +83,23 @@ def get_lectures():
 @app.get('/lectures')
 def return_homeworks():
     return { "data": get_lectures() }
+
+
+
+def get_announcements():
+    # Connecting to our database
+    con = sqlite3.connect("./appdev.db")
+    cur = con.cursor()
+    data = []
+    for ti, d, txt in cur.execute("SELECT title, date, text FROM announcements"):
+        data.append( {
+        "title": ti,
+        "date": d,
+        "text": txt
+    })
+    return data
+
+
+@app.get('/announcements')
+def return_homeworks():
+    return { "data": get_announcements() }
