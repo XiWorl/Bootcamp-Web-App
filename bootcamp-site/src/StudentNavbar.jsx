@@ -24,7 +24,7 @@ export default function Navbar() {
                     <ul className="nav-menu-items" onClick={showSidebar}>
                         <li className="navbar-toggle">
                             <Link to="#" className="menu-bars">
-                                <AiIcons.AiOutlineClose/>
+                                <AiIcons.AiOutlineClose className="close-icon"/>
                             </Link>
                         </li>
                         {StudentSidebarData.map((item, index) => {
