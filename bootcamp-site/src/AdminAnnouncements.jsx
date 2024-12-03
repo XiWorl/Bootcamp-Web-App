@@ -8,6 +8,7 @@ function AdminAnnouncements() {
                 <img id='logo' src= {logo} alt="App Dev Logo" />
                 <h1> App Dev Bootcamp Announcements </h1>
         </div>
+        
     )
 }
 
